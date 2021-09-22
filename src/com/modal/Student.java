@@ -5,7 +5,7 @@ public class Student {
 	private String nm;
 	private long mobile;
 	private int batchid;
-	public Student(int stdid, String nm, long mobile, int batchid) {
+	public Student(String nm, long mobile, int batchid, int stdid) {
 		super();
 		this.stdid = stdid;
 		this.nm = nm;
@@ -64,7 +64,5 @@ public class Student {
 	public String toString() {
 		return "Student [stdid=" + stdid + ", nm=" + nm + ", mobile=" + mobile + ", batchid=" + batchid + "]";
 	
-	
-
-	}
-	}
+}
+}

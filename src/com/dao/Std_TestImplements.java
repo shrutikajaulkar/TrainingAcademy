@@ -10,6 +10,7 @@ import com.configuration.DBConnect;
 public class Std_TestImplements implements Std_TestDao
 {
 
+
 	@Override
 	public boolean addStd_TestDao(Std_TestDao s) {
 		// TODO Auto-generated method stub
@@ -32,17 +33,25 @@ public class Std_TestImplements implements Std_TestDao
 
 	@Override
 	public boolean deleteStd_TestDao(int id) {
-		try (Connection con=DBConnect.getConnection();
-			PreparedStatement pst=con.prepareStatement("Delete from  Std_TestDao whare stdid=?"))
+		try 
+		(Connection con=DBConnect.getConnection();
+			PreparedStatement pst=con.prepareStatement("insertinto Std_TestDao values (?,?)"))
 		{
 			pst.setInt(1, id);
 			pst.executeUpdate();
 			return true;
 		}
-	catch (SQLException e) {
-		// TODO: handle exception
-	}
+			
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
+	}
+	
+		{
+			
+	
 		
 
 	}
@@ -70,7 +79,7 @@ public class Std_TestImplements implements Std_TestDao
 
 	@Override
 	public List<Std_TestDao> getAllStd_TestDao() {
-		// TODO Auto-generated method stub
+		ArrayList<Std_TestDao>Std_TestDaolist=new ArrayList<>();
 		return null;
 	}
 

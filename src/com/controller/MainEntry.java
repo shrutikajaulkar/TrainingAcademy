@@ -9,22 +9,25 @@ import com.modal.Student;
 
 public class MainEntry {
 	
-	private static StdDao stddao;
-
-	public static void main(String[]args) {
-		Scanner sc=new Scanner(System.in);
-		do
-		{
-			System.out.println("*************WELCOME TO TRAINING ACADEMY***************");
-			System.out.println("1->add new student");
-			System.err.println("2->delete student");
-			System.out.println("3->modify student detail");
-			System.out.println("4->add marks of student");
-			System.out.println("5->update marks of student");
-			System.out.println("6->delete results of student");
+	@SuppressWarnings("resource")
+	public static void main(String[] args) {
+		
+Scanner sc = new Scanner(System.in);
+	StdDao sdao=new StdDao();
+	Std_TestDao sdtdao = new Std_TestDao();		
+			do
+			{
+	System.out.println("*************WELCOME TO TRAINING ACADEMY***************");
+			System.out.println("1->Add new student");
+			System.err.println("2->Delete student");
+			System.out.println("3->Modify student detail");
+			System.out.println("4->Add marks of student");
+			System.out.println("5->Update marks of student");
+			System.out.println("6->Delete results of student");
 			System.out.println("7->Exit");
-			System.out.println("enter your choice::");
+			System.out.println("Enter your choice::");
 			int  choice=sc.nextInt();
+			StdDao stddao;
 			switch (choice) {
 			case 1:
 				System.out.println("Enter stdid,Stdname,mobile,batchid");
@@ -32,33 +35,44 @@ public class MainEntry {
 				String nm=sc.next();
 				int mob=sc.nextInt();
 				int batch=sc.nextInt();
-				Student s=new Student(sid,nm,mob,batch);
-		boolean isinseart =StdDao.addStudent(s);
-				if(isinseart)
+				Student s1=new Student(nm,mob,batch,sid);
+				boolean isinsert = s.updateStudent(s1);
+				if(isinsert)
 					System.out.println("your student record added successfully");
 				else
 					System.out.println("unsuccessful insertion");
 				break;
 			case 2:
-				System.out.println("update record");
-				System.out.println("Enter stdid to update");
-				int id=sc.nextInt();
-				System.out.println("Enter the new stdname");
-				String snm=sc.next();
-				Std_TestDao ob=new Std_TestDao(id,snm); 
-					boolean isupdated=sdao.updateStd_TestDao(ob);
-					if(isupdated)
-						System.out.println("record updated successfully");
-					else
-				System.out.println("unsucessful updation");
+				System.out.println("Enter student id to delete");
+				int stid=sc.nextInt();
+				boolean isdelete = (stddao.deleteStudent(stid));
+					System.out.println("raw data is deleted");
+					break;
+			case 3:
+				System.out.println("Modification");
+				System.out.println("Enter student id to update");
+				int id = sc.nextInt();
+				System.out.println("Enter name to update");
+				String sname = sc.next();
+				System.out.println("Enter mobile no to update");
+				long mobile = sc.nextLong();
+				System.out.println("Enter batch id to update");
+				int bid = sc.nextInt();
+				Student stu = new Student(sname,mobile,bid,id);
+				
+				boolean isupdated = stddao.updateStudent(stu);
+				if(isupdated)
+					System.out.println("Record update successfully");
+				else
+					System.out.println("Unsuccessful Modification");
 				break;
-			}
-	
-		(choice==7)
+			}	
+		  if(choice==7)
 				break;
-		} while(true);
+		} 
+		while(true);
 		System.out.println("Thanks !");
 	}
 }
-				
-			
+
+
