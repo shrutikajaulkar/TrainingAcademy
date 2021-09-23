@@ -1,15 +1,15 @@
 package com.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.configuration.DBConnect;
 import com.modal.Student;
-import com.mysql.cj.xdevapi.Statement;
+
 
 public class StdDaoImplements implements StdDao {
 
@@ -25,10 +25,10 @@ public class StdDaoImplements implements StdDao {
 	        pst.setInt(4, s. getBatchid());
 			
 			pst.executeUpdate();
-			System.out.println("Data added successfully.....");
+			System.out.println("Your All Data Added Sucessfully.");
 		} catch (SQLException e) {
 
-			System.out.println("Plz add sufficient data.....");
+			System.out.println("Please Add only sufficient Data!");
 			e.printStackTrace();
 		}
 
@@ -39,7 +39,7 @@ public class StdDaoImplements implements StdDao {
 	public boolean deleteStudent(int id) {
 		 try {
 			 try(Connection connection = DBConnect.getConnection();
-			 PreparedStatement pst = connection.prepareStatement("delete from student where student_id=?"))
+			 PreparedStatement pst = connection.prepareStatement("delete from student where stdid=?"))
 		       {
 				 pst.setInt(1, id);
 				 pst.executeUpdate();
@@ -96,46 +96,8 @@ public class StdDaoImplements implements StdDao {
 		return null;
 	}
 
-	@Override
-	public boolean add(Object stddao) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
-	@Override
-	public boolean delete(int sid) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List getAllStd() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object getStdById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean updateStdDao(StdDao s) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public int getstdid() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public String getstdnm() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

@@ -12,6 +12,9 @@ public class Student {
 		this.mobile = mobile;
 		this.batchid = batchid;
 	}
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * @return the stdid
 	 */

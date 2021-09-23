@@ -1,42 +1,46 @@
 package com.controller;
 
-import java.util.List;
 import java.util.Scanner;
 
 import com.dao.StdDao;
+import com.dao.StdDaoImplements;
 import com.dao.Std_TestDao;
+import com.dao.Std_TestImplements;
 import com.modal.Student;
 
 public class MainEntry {
 	
-	@SuppressWarnings("resource")
-	public static void main(String[] args) {
+
+	public static void main(String[] args)
+	{ 
 		
 Scanner sc = new Scanner(System.in);
-	StdDao sdao=new StdDao();
-	Std_TestDao sdtdao = new Std_TestDao();		
+	StdDao stddao=new StdDaoImplements();
+	Std_TestDao stest=new Std_TestImplements();
 			do
 			{
-	System.out.println("*************WELCOME TO TRAINING ACADEMY***************");
-			System.out.println("1->Add new student");
-			System.err.println("2->Delete student");
-			System.out.println("3->Modify student detail");
-			System.out.println("4->Add marks of student");
-			System.out.println("5->Update marks of student");
-			System.out.println("6->Delete results of student");
+	System.out.println("***********************************************");
+	System.out.println("     WElCOME TO ThinkQuotient  Training Academy ");
+	System.out.println("***********************************************");
+			System.out.println("1->Add new student.");
+			System.out.println("2->Delete student.");
+			System.out.println("3->Modify student detail.");
+			System.out.println("4->Add marks of student.");
+			System.out.println("5->Update marks of student.");
+			System.out.println("6->Delete results of student.");
 			System.out.println("7->Exit");
-			System.out.println("Enter your choice::");
+			System.out.println("Enter your choice---");
 			int  choice=sc.nextInt();
-			StdDao stddao;
+		
 			switch (choice) {
 			case 1:
 				System.out.println("Enter stdid,Stdname,mobile,batchid");
 				int sid=sc.nextInt();
 				String nm=sc.next();
-				int mob=sc.nextInt();
+				long mob=sc.nextLong();
 				int batch=sc.nextInt();
 				Student s1=new Student(nm,mob,batch,sid);
-				boolean isinsert = s.updateStudent(s1);
+				boolean isinsert=stddao.addStudent(s1);
 				if(isinsert)
 					System.out.println("your student record added successfully");
 				else
@@ -46,7 +50,7 @@ Scanner sc = new Scanner(System.in);
 				System.out.println("Enter student id to delete");
 				int stid=sc.nextInt();
 				boolean isdelete = (stddao.deleteStudent(stid));
-					System.out.println("raw data is deleted");
+					System.out.println("Record  data is deleted");
 					break;
 			case 3:
 				System.out.println("Modification");
@@ -71,7 +75,7 @@ Scanner sc = new Scanner(System.in);
 				break;
 		} 
 		while(true);
-		System.out.println("Thanks !");
+		System.out.println("Thanks For visiting");
 	}
 }
 

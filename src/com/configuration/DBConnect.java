@@ -7,7 +7,7 @@ package com.configuration;
 
 	public class DBConnect {
 		private static  String url="jdbc:mysql://localhost:3306/academy";
-		private static  String username="shrutikajaulkar";
+		private static  String username="root";
 		private static  String password="Shrutik@23";
 
 
