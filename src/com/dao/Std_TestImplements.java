@@ -9,6 +9,7 @@ import java.util.List;
 import com.configuration.DBConnect;
 import com.modal.Stud_Test;
 import com.modal.Student;
+import com.modal.Test;
 
 
 public class Std_TestImplements implements Std_TestDao {
@@ -72,21 +73,22 @@ public class Std_TestImplements implements Std_TestDao {
 		
 
 		
-		 public List<Student> getAllStud_Test() {
+		 public List<Stud_Test> getAllStud_Test(Object test) {
 			try(Connection connection= DBConnect.getConnection();
 					PreparedStatement pst = connection.prepareStatement("select * from student_test"))
 			{
-				ArrayList<Student> studentTestlist = new ArrayList<>();
+				ArrayList<Stud_Test> studentTestlist = new ArrayList<>();
 				ResultSet rest = pst.executeQuery();
 				
 				while(rest.next())
 				{
-					Student test = new Student();
-					test.setStdid(rest.getInt(1));
-					test.setNm(rest.getString(2));
-					test.setMobile(rest.getLong(3));
-					test.setBatchid(rest.getInt(4));
-					studentTestlist.add(test);
+					Stud_Test stud_Test = new Stud_Test();
+					stud_Test.setStdid(rest.getInt(1));
+					stud_Test.setTestid(rest.getInt(2));
+				stud_Test.setTestmarks(rest.getInt(3));
+			         studentTestlist.add((Stud_Test) test);
+					
+					studentTestlist.add(stud_Test);
 				}
 				return studentTestlist;
 			}
@@ -94,6 +96,12 @@ public class Std_TestImplements implements Std_TestDao {
 				// TODO: handle exception
 				e.printStackTrace();
 			} 
+			return null;
+		}
+
+		@Override
+		public List<Stud_Test> getAllStud_Test() {
+			// TODO Auto-generated method stub
 			return null;
 		}
 

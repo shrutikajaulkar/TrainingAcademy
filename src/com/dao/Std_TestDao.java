@@ -8,5 +8,5 @@ public interface Std_TestDao {
 	boolean addTestMarks(Stud_Test o);
 	boolean updateTestMarks(Stud_Test o);
 	boolean deleteTestResult(int id);
-	List<Student> getAllStud_Test();
+	List<Stud_Test> getAllStud_Test();
 }

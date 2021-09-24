@@ -25,7 +25,7 @@ public class StdDaoImplements implements StdDao {
 	        pst.setInt(4, s. getBatchid());
 			
 			pst.executeUpdate();
-			System.out.println("Your All Data Added Sucessfully.");
+			return true;
 		} catch (SQLException e) {
 
 			System.out.println("Please Add only sufficient Data!");
@@ -55,7 +55,7 @@ public class StdDaoImplements implements StdDao {
 	public boolean updateStudent(Student s) {
 		try {
 	    	Connection connection = DBConnect.getConnection();
-	        PreparedStatement pst = connection.prepareStatement("UPDATE student SET student_name=?, mobile=?, batch_id=? WHERE student_id=?");
+	        PreparedStatement pst = connection.prepareStatement("UPDATE student SET stdname=?, mobile=?, batchid=? WHERE stdid=?");
 	       
 			pst.setString(1, s.getNm());
 			pst.setLong(2, s.getMobile());

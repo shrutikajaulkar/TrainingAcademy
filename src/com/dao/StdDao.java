@@ -6,9 +6,9 @@ import com.modal.Student;
 public interface StdDao{
 	
 
-	public boolean addStudent(Student s);
+	public boolean addStudent(Student student);
 	boolean deleteStudent(int stid);
-     boolean updateStudent(Student s);
+     boolean updateStudent(Student student);
 	List<Student> getAllStdDao();
 
 	

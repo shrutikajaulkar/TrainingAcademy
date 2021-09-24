@@ -4,6 +4,9 @@ public class Stud_Test {
 	private int stdid;
 	private int testid;
 	private int testmarks;
+	public Stud_Test() {
+		// TODO Auto-generated constructor stub
+	}
 	public Stud_Test(int stdid, int testid, int testmarks) {
 		super();
 		this.stdid = stdid;
