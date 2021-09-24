@@ -14,6 +14,7 @@ public class MainEntry {
 
 	public static void main(String[] args) {
 
+		
 		Scanner sc = new Scanner(System.in);
 		StdDao stddao = new StdDaoImplements();
 		Std_TestDao stest = new Std_TestImplements();
@@ -24,10 +25,11 @@ public class MainEntry {
 			System.out.println("1->Add new student.");
 			System.out.println("2->Delete student.");
 			System.out.println("3->Modify student detail.");
-			System.out.println("4->Add marks of student.");
-			System.out.println("5->Update marks of student.");
-			System.out.println("6->Delete results of student.");
-			System.out.println("10->Exit");
+			System.out.println("4->get all student list");
+			System.out.println("5->Add marks of student.");
+			System.out.println("6->Update marks of student.");
+			System.out.println("7->Delete results of student.");
+			System.out.println("8->Exit");
 			System.out.println("------------------*********-------------------");
 			System.out.println("Enter your choice---");
 			int choice = sc.nextInt();
@@ -124,11 +126,11 @@ public class MainEntry {
 					break;
 				}
 
-				if (choice == 10)
+				if (choice == 8)
 					break;
 			}
 		} while (true);
-		// System.out.println("Thanks For visiting");
+		//System.out.println("Thanks For visiting");
 
 	}
 }
