@@ -85,9 +85,11 @@ public class StdDaoImplements implements StdDao {
 				Student s = new Student();
 				s.setStdid(rs.getInt(1));
 				s.setNm(rs.getString(2));
-				s.setMobile(rs.getInt(3));
+				s.setMobile(rs.getLong(3));
 				s.setBatchid(rs.getInt(4));
+			     studentlist.add(s);
 			}
+			return studentlist;
 		}
 		catch (Exception e) {
 			// TODO: handle exception

@@ -41,7 +41,7 @@ public class Std_TestImplements implements Std_TestDao {
 		public boolean deleteTestResult(int id) {
 			 try {
 				 try(Connection connection = DBConnect.getConnection();
-				 PreparedStatement pst = connection.prepareStatement("delete from student_test where student_id=?"))
+				 PreparedStatement pst = connection.prepareStatement("delete from student_test where studid=?"))
 			       {
 					 pst.setInt(1, id);
 					 pst.executeUpdate();
@@ -55,7 +55,7 @@ public class Std_TestImplements implements Std_TestDao {
 		public boolean updateTestMarks(Stud_Test o) {
 			try {
 		    	Connection connection = DBConnect.getConnection();
-		        PreparedStatement pst = connection.prepareStatement("UPDATE student_test SET marks=? WHERE student_id=? and test_id=?");
+		        PreparedStatement pst = connection.prepareStatement("UPDATE student_test SET testmarks=? WHERE studid=? and testid=?");
 		       
 		        pst.setInt(1, o.getTestmarks());
 				pst.setInt(2,o.getStdid());
@@ -73,7 +73,7 @@ public class Std_TestImplements implements Std_TestDao {
 		
 
 		
-		 public List<Stud_Test> getAllStud_Test(Object test) {
+		 public List<Stud_Test> getAllStud_Test1() {
 			try(Connection connection= DBConnect.getConnection();
 					PreparedStatement pst = connection.prepareStatement("select * from student_test"))
 			{
@@ -82,14 +82,13 @@ public class Std_TestImplements implements Std_TestDao {
 				
 				while(rest.next())
 				{
-					Stud_Test stud_Test = new Stud_Test();
-					stud_Test.setStdid(rest.getInt(1));
-					stud_Test.setTestid(rest.getInt(2));
-				stud_Test.setTestmarks(rest.getInt(3));
-			         studentTestlist.add((Stud_Test) test);
+					Stud_Test test = new Stud_Test();
+					test.setStdid(rest.getInt(1));
+					test.setTestid(rest.getInt(2));
+				    test.setTestmarks(rest.getInt(3));
+			         studentTestlist.add(test);
 					
-					studentTestlist.add(stud_Test);
-				}
+					}
 				return studentTestlist;
 			}
 			catch (Exception e) {
@@ -105,7 +104,9 @@ public class Std_TestImplements implements Std_TestDao {
 			return null;
 		}
 
+		}
+
 		
-	}  
+
 
 

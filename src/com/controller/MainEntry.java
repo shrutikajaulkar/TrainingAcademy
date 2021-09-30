@@ -23,13 +23,14 @@ public class MainEntry {
 			System.out.println("     WElCOME TO ThinkQuotient  Training Academy ");
 			System.out.println("***********************************************");
 			System.out.println("1->Add new student.");
-			System.out.println("2->Delete student.");
+			System.out.println("2->Delete student information.");
 			System.out.println("3->Modify student detail.");
-			System.out.println("4->get all student list");
+			System.out.println("4->view all  student list");
 			System.out.println("5->Add marks of student.");
 			System.out.println("6->Update marks of student.");
-			System.out.println("7->Delete results of student.");
-			System.out.println("8->Exit");
+			System.out.println("7->Delete student result.");
+			System.out.println("8->view student marks list");
+			System.out.println("9->Exit");
 			System.out.println("------------------*********-------------------");
 			System.out.println("Enter your choice---");
 			int choice = sc.nextInt();
@@ -75,7 +76,9 @@ public class MainEntry {
 			case 4:
 				List<Student> list = stddao.getAllStdDao();
 				for (Student ss : list) {
-					System.out.println(ss.getStdid() + ss.getNm() + ss.getMobile() + ss.getBatchid());
+			System.out.println("-------------------------------------------------------------------------------------");
+					System.out.println(ss.getStdid()+"||"+ ss.getNm() +"||"+ ss.getMobile() +"||"+ ss.getBatchid());
+			System.out.println("-------------------------------------------------------------------------------------");
 				}
 				break;
 
@@ -85,8 +88,7 @@ public class MainEntry {
 				int tid = sc.nextInt();
 				int marks = sc.nextInt();
 				Stud_Test st = new Stud_Test(stdid, tid, marks);
-
-				boolean ismarksinsert = stest.addTestMarks(st);
+                    boolean ismarksinsert = stest.addTestMarks(st);
 				if (ismarksinsert)
 					System.out.println("Record added successfully");
 				else
@@ -95,13 +97,13 @@ public class MainEntry {
 
 			case 6:
 				System.out.println("Modification");
-				System.out.println("Enter student id to update");
-				int updatestdid = sc.nextInt();
-				System.out.println("Enter test_id to update");
+				System.out.println("Enter studid to update");
+				int studid = sc.nextInt();
+				System.out.println("Enter testid to update");
 				int testid = sc.nextInt();
 				System.out.println("Enter marks to update");
 				int testmarks = sc.nextInt();
-				Stud_Test stupdate = new Stud_Test(updatestdid, testid, testmarks);
+				Stud_Test stupdate = new Stud_Test(studid, testid, testmarks);
 
 				boolean ismarksupdated = stest.updateTestMarks(stupdate);
 
@@ -113,22 +115,24 @@ public class MainEntry {
 
 			case 7:
 				System.out.println("enter student id to delete marks");
-				int studid = sc.nextInt();
-				boolean ismarksdelete = stest.deleteTestResult(studid);
+				int studid1 = sc.nextInt();
+				boolean ismarksdelete = stest.deleteTestResult(studid1);
+				
 				System.out.println("Record is deleted....");
 				break;
 			case 8:
 				List<Stud_Test> listmarks = stest.getAllStud_Test();
-				System.out.println("welcome" + listmarks);
-				for (Stud_Test ss : listmarks) {
-					System.out.println(ss.getStdid() + ss.getTestid() + ss.getTestmarks() );
-
+				
+				for (Stud_Test ss : listmarks)
+				{
+					System.out.println(ss.getStdid() +"|"+ ss.getTestid()+"|" + ss.getTestmarks() );
+				}
 					break;
 				}
 
-				if (choice == 8)
+				if (choice == 9)
 					break;
-			}
+			
 		} while (true);
 		//System.out.println("Thanks For visiting");
 
