@@ -20,7 +20,7 @@ public class MainEntry {
 		Std_TestDao stest = new Std_TestImplements();
 		do {
 			System.out.println("***********************************************");
-			System.out.println("     WElCOME TO ThinkQuotient  Training Academy ");
+			System.out.println("     WElCOME TO Java Training Academy ");
 			System.out.println("***********************************************");
 			System.out.println("1->Add new student.");
 			System.out.println("2->Delete student information.");
